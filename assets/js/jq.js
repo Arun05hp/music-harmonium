@@ -10,6 +10,13 @@ function removeTransition(e){
     audio.currentTime = 0;
     audio.play();
 }
+
+function stopSound(e){
+  const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  audio.pause();
+  audio.currentTime=0;
+}
   const keys = Array.from(document.querySelectorAll('.key'));
   keys.forEach(key => key.addEventListener('transitionend',removeTransition));
   window.addEventListener('keydown',playSound);
+ window.addEventListener('keyup',stopSound);
